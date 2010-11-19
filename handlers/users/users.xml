@@ -1,0 +1,20 @@
+<users rest-root="true">
+	<!-- Get User ID -->
+	<rde-dm:attribute mode="write" attribute="request:rest.users.id" value="[#request:rest.path.parts[2]#]" />
+	
+	<!-- Determine Mode -->
+	<rde-dm:attribute mode="condition" attribute="request:rest.users.id" op="ne" value="" tag="notag">
+		<rde-dm:if>
+			<!-- Report Mode -->
+			<rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="report"/>
+		</rde-dm:if>
+		<rde-dm:else>
+			<!-- List Mode -->
+			<rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="list"/>
+		</rde-dm:else>
+	</rde-dm:attribute>
+	
+	<!-- Include Mode Handler -->
+	<rde-dm:include content="users.[#request:rest.users.mode#].xml" tag="notag" />
+	
+</users>

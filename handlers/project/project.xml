@@ -1,0 +1,7 @@
+<project>
+	<!-- Save ID as Project ID -->
+	<rde-dm:attribute mode="write" attribute="request:rest.project.id" value="[#request:rest.id#]" />
+	
+	<!-- Get Sub-Handler -->
+
+</project>

@@ -1,1 +1,29 @@
-Readme
+This is the DSaaS README v0.0.1 
+
+This is an alpha status project that needs some help. It was developed using v9 of OpenText Delivery Server.
+
+Structure of Repository
+
+api-doc
+handlers (add and fix these here and we can bundle them back into a DS project later)
+	ping
+	users
+	project
+	etc (add more here once tested with core project)
+exports.zip (DS projects and Registry Varibles to get the framework to develop DSaaS)
+
+########################################################################
+
+Copyright 2010 OpenText Corporation
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
