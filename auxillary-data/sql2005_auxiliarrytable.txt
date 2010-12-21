@@ -1,0 +1,17 @@
+USE [ls_supplemental_database]
+GO
+/****** Object:  Table [dbo].[restest]    Script Date: 12/21/2010 17:07:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[restest](
+	[value] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[id] [int] NOT NULL,
+ CONSTRAINT [PK_restest_1] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+/** insert value 1 and id 1  for unit tests**/
