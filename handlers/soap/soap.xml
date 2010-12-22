@@ -1,0 +1,8 @@
+<soap rest-root="true">
+  <!-- prepared envelope only -->
+  <rde-dm:webservice name="[#request:connectorname#]"> 
+  <rde-rd:soap-message type="prepared" prepared-envelope="[#request:preparedenvelope#]"> 
+    <rde-dm:attribute attribute="request:parameters" mode="read" tag="notag" />
+  </rde-rd:soap-message> 
+  </rde-dm:webservice>
+</soap>

@@ -1,0 +1,16 @@
+<script rest-root="true">
+	<!-- susceptible to SQL injection secure at connector level -->
+<rde-dm:script  
+   project ="[#request:project#]" 
+   name ="[#request:scriptname#]" 
+   content ="[#request:contentname#]" 
+   script-requestparams ="[#request:params#]"  
+   include-mode ="[#request:includemode#]" 
+   item-tag ="item" 
+> 
+<!--  no params for now
+    <parameter name-1>{value 1}</parameter name-1> 
+    <parameter name-n>{value n}</parameter name-n> 
+-->
+ </rde-dm:script>
+</script>
