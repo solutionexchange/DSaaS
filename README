@@ -1,20 +1,30 @@
-This is the DSaaS README v0.0.1 
+This is the DSaaS README v0.1.0 
 
-This is an alpha status project that needs some help. It was developed using v9 of OpenText Delivery Server.
+This is an alpha status project that needs some help. It was developed using v10.x of OpenText Delivery Server. 
 
 Structure of Repository
 
 api-doc
+auxillary-data (databases and other auxillary data for providing tests)
 handlers (add and fix these here and we can bundle them back into a DS project later)
+	http
+	message
 	ping
-	users
 	project
-	etc (add more here once tested with core project)
-exports.zip (DS projects and Registry Varibles to get the framework to develop DSaaS)
+	rdb
+	repository
+	script
+	search
+	soap
+	target
+	user
+	(add more here once tested with core project)
+transportPackages-snapshots (snapshots of different versions look for latest)
+exports.zip (Original+Outdated - DS projects and Registry Varibles to get the framework to develop DSaaS)
 
 ########################################################################
 
-Copyright 2010 OpenText Corporation
+Copyright 2010-2011 OpenText Corporation
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
