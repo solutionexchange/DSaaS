@@ -1,0 +1,14 @@
+<contentgroup rest-root="true">
+<rde-dm:include content="handler-support.xml" />
+<!--  /api/contentgroup.xml?project=rest&amp;group=test -->
+
+	<!-- Save ID as Project ID -->
+	<rde-dm:attribute mode="write" attribute="request:rest.project.id" value="[#request:project#]" />
+	<rde-dm:attribute mode="write" attribute="request:rest.group.id" value="[#request:group#]" />
+
+	<rde-dm:attribute mode="read" attribute="request:rest.project.id" tag="projectname" />
+        <rde-dm:attribute mode="read" attribute="request:rest.group.id" tag="groupname" />
+        <!-- future location of iolet api calls to filter and list content group info -->
+
+
+</contentgroup>

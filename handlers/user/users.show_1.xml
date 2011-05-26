@@ -1,0 +1,29 @@
+<user-show>
+<!-- definition of spec from wiki
+show=[session|attr+YourAttribureName|]
+show= assumes current session * session yields session id+username * attr+[#YourAttributeName] yields user & session scope attributes
+ -->
+	<rde-dm:attribute mode="condition" attribute="request:show" op="eq" value="session" tag="notag">
+		<rde-dm:if>
+			<!-- Session Mode --><status>session</status>
+			<rde-dm:attribute mode="read" attribute="request:rdeSessionID" tag="session"/>
+		</rde-dm:if>
+		<rde-dm:else>
+				<rde-dm:attribute mode="condition" attribute="request:show" op="contains" value="attr" tag="notag">
+					<rde-dm:if>
+						<!-- Read Attr Mode -->
+						<!-- write out temp attribute name value -->
+						<status>attr</status>
+						<rde-dm:attribute mode="write" attribute="request:temp.attribute" value="[#request:show#].substring(5)"/>
+						<!-- read from 2 scopes -->
+						<rde-dm:attribute mode="read" attribute="request:temp.attribute" tag="attr"/>
+						<rde-dm:attribute mode="read" attribute="session:[#request:temp.attribute#null#]" tag="session"/>
+						<rde-dm:attribute mode="read" attribute="user:[#request:temp.attribute#null#]" tag="user"/>
+					</rde-dm:if>
+					<rde-dm:else>
+						<!-- Unknown - future? State --><status>unknown</status>
+					</rde-dm:else>
+				</rde-dm:attribute>
+		</rde-dm:else>
+	</rde-dm:attribute>
+</user-show>

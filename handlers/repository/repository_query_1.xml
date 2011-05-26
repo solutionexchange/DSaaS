@@ -1,0 +1,40 @@
+<repository-query>
+
+<rde-dm:repository  
+  mode                 ="query"  
+  name                 ="[#request:#connector#]"  
+  project              ="[#request:#project#]"  
+  locale               ="[#request:#locale#]"  
+  dateformat-out       ="[#request:##]{date format}"  
+  include-mode         ="[#request:include-mode#content-listdisplay,notag#]]"  
+  metainfo             ="[#request:metainfo#]"  
+  chunk                ="[#request:chunk#1#]"  
+  chunksize            ="[#request:chunksize#10#]"  
+  maxhits              ="[#request:maxhits#50#]"  
+  sortedby             ="[#request:sortedby##]"  
+  sortorder            ="[#request:sortorder#asc#]"  
+  depth                ="[#request:depth#1#]"    
+  version              ="[#request:version#]"  
+  item-tag             ="item"  
+  cache-id             ="[#request:cacheid#]"  
+  size-max             ="[#request:sizemax#]"  
+  size-swap            ="[#request:size-swap##]"  
+  size-determine       ="[#request:size-determine#8#]"  
+  encoding             ="[#request:encoding#UTF-8#]"  
+  repository-attribute ="[#request:#attribute#]"  
+  access               ="[#request:access#all#]"   
+  sources              ="[#request:sources#]"  
+  rendition            ="[#request:rendition#thumbnail#]" > 
+
+  <rde-dm:attribute mode="condition" attribute="request:query" tag="notag" op="ne" value="">
+    <rde-dm:attribute mode="read" attribute="request:query" tag="rde-rd:query-native"/> 
+  </rde-dm:attribute>
+  <rde-dm:attribute mode="condition" attribute="request:fulltext" tag="notag" op="ne" value="">
+    <rde-dm:attribute mode="read" attribute="request:fulltext" tag="rde-rd:query-fulltext"/> 
+  </rde-dm:attribute>  
+  <rde-dm:attribute mode="condition" attribute="request:category" tag="notag" op="ne" value="">
+    <rde-dm:attribute mode="read" attribute="request:category" tag="rde-rd:query-category"/> 
+  </rde-dm:attribute>
+</rde-dm:repository> 
+
+</repository-query>

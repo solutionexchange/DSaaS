@@ -1,0 +1,24 @@
+<script rest-root="true">
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+
+<!-- sample call http://{api.host}//cps/rde/xfw2/rest/xml/script?project=rest&amp;contentname=rest:test1&amp;scriptname=rest:python-date.py&amp;params=date=12/22/2010|add_days=4|date_format=MM/dd/yyyy|method=addDays -->
+
+	<rde-dm:attribute mode="write" attribute="request:params2" value="[#request:params#]" value-separator="|" />
+	<rde-dm:attribute attribute="request:params2" mode="for-each" alias="param" tag="params">
+		<rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" />
+	</rde-dm:attribute>
+	<!-- Script DM -->
+	<rde-dm:script  
+		project="[#request:project#]" 
+		name="[#request:scriptname#]" 
+		content="[#request:contentname#]" 
+		script-requestparams="[#request:useparams#none#]"  
+		include-mode="[#request:includemode#mixed#]" 
+		item-tag="item" tag="scriptresult">
+		<rde-dm:attribute attribute="request:params2" mode="for-each" alias="param" tag="notag">
+			<rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" />
+		</rde-dm:attribute>
+	</rde-dm:script>
+</script>

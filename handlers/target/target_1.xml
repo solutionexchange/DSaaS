@@ -1,0 +1,34 @@
+<target rest-root="true" >
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+
+<!-- encapsulation of all target dm queries -->
+
+<rde-dm:target     
+  mode               ="select"  
+  project            ="[#request:project#]"  
+  group              ="[#request:group#]"  
+  locale             ="[#request:locale#]"  
+  locale-policy      ="[#request:locale-policy#none#]"  
+  include-mode       ="[#request:include-mode#content,content#]"  
+  context-tags       ="[#request:context-tags#title,mixed#]"  
+  context-mode       ="[#request:context-mode#mixed#]"  
+  chunksize          ="[#request:chunksize#10#]"  
+  chunk              ="[#request:chunk#1#]"   
+  maxhits            ="[#request:maxhits#50#]"  
+  sortedby           ="[#request:sortedby#]"  
+  sortorder          ="[#request:sortorder#asc#]"  
+  confirm            ="[#request:confirm#chunk#]"  
+  ignore-constraints ="[#request:ignore-constraints#no#]"  
+  attributepath      ="[#request:attributepath#.#]"   
+  db-structure       ="[#request:dbs#]"  
+  cache-id-attribute ="[#request:cacheattr#cacheattr#]"  
+  cache-id           ="[#request:cacheid#cacheid#]"  
+  item-tag           ="item"
+  tag="targetresult">
+  <rde-dm:attribute mode="condition" attribute="request:constraint" tag="notag" op="ne" value="">
+      <rde-dm:attribute mode="read" attribute="request:constraint" tag="rde-dm:constraint"/> 
+  </rde-dm:attribute>
+</rde-dm:target> 
+</target>

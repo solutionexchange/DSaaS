@@ -1,0 +1,19 @@
+<http rest-root="true">
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+<!-- your friendly neighborhood HTTP Connector call -->
+<!-- sample call (url encode first) http://{api.host}//cps/rde/xfw2/rest/xml/http?connector=rest&amp;operation=ping&amp;params=param1=1|param2=2 -->
+
+<!-- TODO: make sure all HTTP connector features are included -->
+<rde-dm:http mode="operation" name="[#request:connector#]" operation="[#request:operation#]">
+    <rde-dm:attribute attribute="request:params" mode="for-each" alias="param" tag="notag">
+      <rde-dm:param>
+        <rde-dm:attribute mode="read" attribute="context:param" op="parent" inline-function="split('=',1)" tag="name" />
+        <rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="notag" />
+      </rde-dm:param>
+    </rde-dm:attribute>
+
+</rde-dm:http>
+
+</http>

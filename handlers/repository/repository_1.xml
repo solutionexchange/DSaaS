@@ -1,0 +1,32 @@
+<repository rest-root="true">
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+<rde-dm:attribute attribute="request:mode" mode="read" tag="mode"/>
+
+<!-- TODO: 
+	Reading content from an external repository (mode="read")
+	Searching an external repository (mode="query")
+	Creating content in an external repository (mode="create")
+	Creating a folder in an external repository (mode="create-folder")
+	Updating content in an external repository (mode="update")
+	Updating a folder in an external repository (mode="update-folder")
+	Deleting content from an external repository (mode="delete")
+	Deleting a folder from an external repository (mode="delete-folder")
+	Checking content into an external repository (mode="checkin")
+	Checking content out of an external repository (mode="checkout")
+	Removing a lock on content in an external repository (mode="cancel-
+	checkout")
+	Listing content classes (in Livelink: categories; in Artesia: metadata models) for 
+	content in an external repository (mode="list-classes")
+	Listing content classes (in Livelink: categories) for folders in an external 
+	repository (mode="list-classes-folder")
+	Listing folder items/categories (mode="list")
+if for all of these w/ if http method then include another file to encapsulate function
+-->
+
+<rde-dm:attribute mode="condition">
+	<rde-dm:constraint>request;mode eq 'query'/</rde-dm:constraint>
+	<rde-dm:include mode="" content="repository_query.xml"/>
+</rde-dm:attribute>
+</repository>

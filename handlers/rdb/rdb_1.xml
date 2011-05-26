@@ -1,0 +1,17 @@
+<rdb rest-root="true">
+
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+	<!-- susceptible to SQL injection secure at connector level -->
+  <rde-dm:rdb 
+   mode="query"  
+   alias="[#request:alias#]"  
+   sql="[#request:query#]"  
+   row="row" 
+   item-tag="item" 
+   maxrows="[#request:maxrows#10#]" 
+   chunksize="[#request:chunksize#10#]" 
+   chunk="[#request:chunk#1#]" 
+ />
+</rdb>

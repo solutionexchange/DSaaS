@@ -1,0 +1,43 @@
+<user rest-root="true">
+        <!-- add general handler support -->
+        <rde-dm:include content="handler-support.xml" />
+	
+	<!-- Get User ID -->
+	<rde-dm:attribute mode="write" attribute="request:rest.users.id" value="[#request:user#]" />
+	
+	<!-- Determine Mode -->
+	<rde-dm:attribute mode="condition" attribute="request:rest.users.id" op="ne" value="" tag="notag">
+		<rde-dm:if>
+			<!-- Report Mode -->
+			<rde-dm:attribute mode="condition" attribute="request:password" op="ne" value="" tag="notag">
+				<rde-dm:if>
+					<!-- Report Mode -->
+					<rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="login"/>
+				</rde-dm:if>
+				<rde-dm:else>
+					<!-- List Mode -->
+					<rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="report"/>
+				</rde-dm:else>
+			</rde-dm:attribute>
+		</rde-dm:if>
+		<rde-dm:else>
+		<rde-dm:attribute mode="condition" attribute="request:show" op="ne" value="" tag="notag">
+				<rde-dm:if>
+					<!-- Report Mode -->
+					<rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="show"/>
+				</rde-dm:if>
+				<rde-dm:else>
+					<!-- List Mode -->
+			        <rde-dm:attribute mode="write" attribute="request:rest.users.mode" value="list"/>
+				</rde-dm:else>
+			</rde-dm:attribute>
+			
+		</rde-dm:else>
+	</rde-dm:attribute>
+	
+	<!-- Include Mode Handler 
+note _1 is version number increment with next release
+-->
+	<rde-dm:include content="users.[#request:rest.users.mode#]_1.xml" tag="notag" />
+	
+</user>

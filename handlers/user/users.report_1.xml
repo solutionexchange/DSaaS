@@ -1,6 +1,6 @@
 <report>
 	<!-- Report on the selected User -->
-	<rde-dm:user mode="report" user="[#request:rest.users.id#]" path="[#request:path#]" resulttype="xml" tag="notag" item-tag="user">
+	<rde-dm:user mode="report" user="[#request:rest.users.id#]" path="[#request:path#]" resulttype="xml" tag="notag" item-tag="user-report">
 		<!-- Limit Attributes -->
 		<rde-dm:attribute mode="read" attribute="request:attributes" tag="attributes" item-tag="attribute"/>
 	</rde-dm:user>

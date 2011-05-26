@@ -1,0 +1,5 @@
+<ping>
+<!-- add general handler support -->
+        <rde-dm:include content="handler-support.xml" />
+	pong
+</ping>

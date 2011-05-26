@@ -1,0 +1,21 @@
+<searchFunction>
+<!-- encapsulation of all search queries -->
+
+ <!-- Prepare the correct mime type for the format requested -->
+ <rde-dm:include content="handler-support.xml" />
+
+ <rde-dm:attribute mode="condition" attribute="request:q" op="ne" tag="notag">
+   <rde-dm:if>
+    <rde-dm:query context-tags="summary" tag="search" item-tag="result" project="[#request:rest.project.id##]"> 
+      <rde-dm:query-cis> 
+        <![CDATA[ [#request:q#] ]]> 
+      </rde-dm:query-cis> 
+    </rde-dm:query>
+   </rde-dm:if>
+   <rde-dm:else>
+     <error>
+      <message>No query provided</message>
+     </error>
+   </rde-dm:else>
+ </rde-dm:attribute>
+</searchFunction>

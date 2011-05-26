@@ -1,0 +1,29 @@
+<message rest-root="true">
+
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+<!-- your friendly neighborhood SMTP message -->
+<!-- TODO: add spam controls like rate limiter per session id and user id -->
+
+<rde-dm:message  
+  mode      ="smtp"  
+  name      ="[#request:config#]"  
+  send-type ="[#request:send-type#queue#]"   
+  report-tag="messagereport">  
+ 
+<rde-rd:email>  
+  <rde-rd:from>ds-api@opentext.com</rde-rd:from>  
+  <rde-rd:reply-to>ds-api@opentext.com</rde-rd:reply-to>  
+  <rde-rd:recipients>  
+  <rde-rd:recipient type="to"><rde-dm:attribute mode="read" attribute="request:to" tag="notag"/> 
+  </rde-rd:recipient>
+  </rde-rd:recipients>  
+  <rde-rd:subject><rde-dm:attribute attribute="request:subject" mode="read" tag="notag"/></rde-rd:subject>  
+  <rde-rd:body type="text/plain"><rde-dm:attribute mode="read" attribute="request:text" tag="notag"/>  
+  </rde-rd:body>  
+ 
+
+</rde-rd:email>
+</rde-dm:message> 
+</message>

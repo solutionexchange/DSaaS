@@ -1,0 +1,13 @@
+<project rest-root="true">
+        <!-- add general handler support -->
+        <rde-dm:include content="handler-support.xml" />
+
+	<!-- Save ID as Project ID -->
+<rde-dm:attribute mode="condition" attribute="request:project" op="ne" value="">
+	<rde-dm:attribute mode="write" attribute="request:rest.project.id" value="[#request:project#]" />
+</rde-dm:attribute>	
+
+	<rde-dm:attribute mode="read" attribute="request:rest.project.id" tag="projectname" />
+
+        <!-- future home of open api iolet calls to coacontentfilter or other stuff -->
+</project>

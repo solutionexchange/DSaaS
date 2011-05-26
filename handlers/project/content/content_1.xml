@@ -1,0 +1,92 @@
+<content rest-root="true">
+<rde-dm:include content="handler-support.xml" />
+<!-- encapsulation of all search queries -->
+<!-- rde-rd:query-string -->
+<!-- stuff after ? rde-dm:attribute attribute="request:rde-rd:query-string" mode="read" tag="notag"/ -->
+<!-- rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" / -->
+
+	<rde-dm:attribute mode="condition" tag="notag">
+			<rde-dm:constraint>request:content ne "" and request:project ne ""</rde-dm:constraint>
+			<rde-dm:if tag="notag">
+				<!-- query string exists >
+				< rde-dm:attribute attribute="request:rest.suffix" mode="read" tag="notag"/>
+				< rde-dm:attribute attribute="request:rest.contentfacet" mode="read" tag="notag"/>
+				< rde-dm:attribute attribute="request:rest.contentfacetparam" mode="read" tag="notag"/ -->
+				<!-- if content facet ="" just get content -->
+				<rde-dm:attribute mode="condition" tag="notag">
+					<rde-dm:constraint>request:op eq ""</rde-dm:constraint>
+					<rde-dm:if tag="notag">
+						<!-- include content only -->
+						<rde-dm:include content="[#request:content#]" stylesheet="html" cachingtime="60" tag="notag" mode="text"/>
+						
+					</rde-dm:if>
+					<rde-dm:else tag="notag">
+						<!-- contetfacet, decide which one and do request -->
+						<rde-dm:attribute mode="condition" tag="notag">
+							<rde-dm:constraint>request:op eq "attribute"</rde-dm:constraint>
+							<rde-dm:if tag="notag">
+								<!-- do attribute specific things reading etc-->
+								<!-- sample call http://{api.host}/cps/rde/xfw2/rest/xml/content/?project=rest&content=test1&op=attribute&attribute=attr1 -->
+								<rde-dm:attribute project="[#request:project#]" content="[#request:content#]" attribute="[#request:attribute#]" source="content" mode="for-each" alias="attr" tag="attribute">
+									<rde-dm:attribute mode="read" attribute="context:attr" value-seperator=";" tag="attr-vals"/>
+								</rde-dm:attribute>
+							</rde-dm:if>
+							<rde-dm:else tag="notag">
+								<rde-dm:attribute mode="condition" tag="notag">
+									<rde-dm:constraint>request:op eq "constraints"</rde-dm:constraint>
+									<rde-dm:if tag="notag">
+										<!-- do get constraint info -->
+										to be built
+									</rde-dm:if>
+									<rde-dm:else tag="notag">
+										<rde-dm:attribute mode="condition" tag="notag">
+											<rde-dm:constraint>request:op eq "ratings"</rde-dm:constraint>
+											<rde-dm:if tag="notag">
+												<!-- include content ratings only -->
+												requires OTSC integration
+											</rde-dm:if>
+											<rde-dm:else tag="notag">
+												<rde-dm:attribute mode="condition" tag="notag">
+													<rde-dm:constraint>request:op eq "comments"</rde-dm:constraint>
+													<rde-dm:if tag="notag">
+														<!-- include content comments only -->
+														requires OTSC integration
+													</rde-dm:if>
+													<rde-dm:else tag="notag">
+														<rde-dm:attribute mode="condition" tag="notag">
+															<rde-dm:constraint>request:op eq "hits"</rde-dm:constraint>
+															<rde-dm:if tag="notag">
+																<!-- include content hits only -->
+																requires WCM Analytics integration
+															</rde-dm:if>
+															<rde-dm:else tag="notag">
+																<!-- contetfacet, decide which one and do request -->
+																 Not a supported feature
+															</rde-dm:else>
+														</rde-dm:attribute>
+														
+													</rde-dm:else>
+												</rde-dm:attribute>
+												
+											</rde-dm:else>
+										</rde-dm:attribute>
+										
+									</rde-dm:else>
+								</rde-dm:attribute>
+								
+							</rde-dm:else>
+						</rde-dm:attribute>
+					</rde-dm:else>
+				</rde-dm:attribute>
+			</rde-dm:if>
+			<rde-dm:else tag="notag">
+				<!-- no parameters -->
+				<p>This is the content function home. Functions include:</p>
+				<ul>
+					<li>display a content</li>
+					<li>display a content's metadata</li>
+				</ul>
+            </rde-dm:else>
+	</rde-dm:attribute>
+
+</content>

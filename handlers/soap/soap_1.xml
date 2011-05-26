@@ -1,0 +1,20 @@
+<soap rest-root="true">
+<!-- add general handler support -->
+<rde-dm:include content="handler-support.xml" />
+
+
+<!-- sample call (url encode first) http://{api.host}//cps/rde/xfw2/rest/xml/soap?connectorname=dsauth&amp;preparedenvelope=version&amp;&amp;params=date=12/22/2010|add_days=4|date_format=MM/dd/yyyy|method=addDays -->
+
+	<rde-dm:attribute mode="write" attribute="request:params2" value="[#request:params#]" value-separator="|" />
+	<rde-dm:attribute attribute="request:params2" mode="for-each" alias="param" tag="params">
+		<rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" />
+	</rde-dm:attribute>
+  <!-- prepared envelope only -->
+  <rde-dm:webservice name="[#request:connectorname#]"> 
+  <rde-rd:soap-message type="prepared" prepared-envelope="[#request:preparedenvelope#]"> 
+    	<rde-dm:attribute attribute="request:params2" mode="for-each" alias="param" tag="notag">
+			<rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" />
+		</rde-dm:attribute>
+  </rde-rd:soap-message> 
+  </rde-dm:webservice>
+</soap>
