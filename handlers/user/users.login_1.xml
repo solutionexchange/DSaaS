@@ -1,8 +1,9 @@
 <user-login>
-	<!-- validate user submitted, user not already logged in, post used (long term confirm HTTPS used) -->
-	<user-login-reached>true</user-login-reached>
-	<rde-dm:attribute attribute="request:rest.users.id" mode="read"/>
-	<rde-dm:attribute attribute="request:rde-rd:httpHeader-method" mode="read"/>
+       
+    <!-- validate user submitted, user not already logged in, post used (long term confirm HTTPS used) -->
+    <user-login-reached>true</user-login-reached>
+    <rde-dm:attribute attribute="request:rest.users.id" mode="read"/>
+    <rde-dm:attribute attribute="request:rde-rd:httpHeader-method" mode="read"/>
     <rde-dm:attribute mode="condition">
 		<rde-dm:constraint>( user:authenticationStatus ne 3 ) and (request:rest.users.id ne "") and (request:password ne "") and (request:rde-rd:httpHeader-method eq "POST")</rde-dm:constraint>
 		<rde-dm:if>

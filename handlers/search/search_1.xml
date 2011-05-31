@@ -18,4 +18,5 @@
      </error>
    </rde-dm:else>
  </rde-dm:attribute>
+ <rde-dm:include content="handler-catch.xml" />
 </searchFunction>

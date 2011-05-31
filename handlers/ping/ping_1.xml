@@ -1,5 +1,9 @@
 <ping>
 <!-- add general handler support -->
+        <rde-dm:attribute attribute="request:noauthentication" mode="write" value="true"/>
+        <rde-dm:attribute attribute="session:safetycode" mode="write" value="EC81DC7D-106768CF"/>
+        <rde-dm:attribute attribute="request:safetycode" mode="write" value="EC81DC7D-106768CE"/>
         <rde-dm:include content="handler-support.xml" />
 	pong
+        <rde-dm:include content="handler-catch.xml" />
 </ping>

@@ -10,4 +10,5 @@
 	<rde-dm:attribute mode="read" attribute="request:rest.project.id" tag="projectname" />
 
         <!-- future home of open api iolet calls to coacontentfilter or other stuff -->
+	<rde-dm:include content="handler-catch.xml" />
 </project>

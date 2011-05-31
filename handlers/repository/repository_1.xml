@@ -29,4 +29,5 @@ if for all of these w/ if http method then include another file to encapsulate f
 	<rde-dm:constraint>request;mode eq 'query'/</rde-dm:constraint>
 	<rde-dm:include mode="" content="repository_query.xml"/>
 </rde-dm:attribute>
+	<rde-dm:include content="handler-catch.xml" />
 </repository>

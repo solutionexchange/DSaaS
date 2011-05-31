@@ -10,5 +10,5 @@
         <rde-dm:attribute mode="read" attribute="request:rest.group.id" tag="groupname" />
         <!-- future location of iolet api calls to filter and list content group info -->
 
-
+	<rde-dm:include content="handler-catch.xml" />
 </contentgroup>

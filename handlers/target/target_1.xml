@@ -31,4 +31,5 @@
       <rde-dm:attribute mode="read" attribute="request:constraint" tag="rde-dm:constraint"/> 
   </rde-dm:attribute>
 </rde-dm:target> 
+	<rde-dm:include content="handler-catch.xml" />
 </target>

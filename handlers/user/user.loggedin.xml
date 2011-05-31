@@ -1,1 +1,1 @@
-<user-login><loggedin>true</loggedin></user-login>
+<user-login><loggedin>true</loggedin><rde-dm:attribute attribute="request:rdeSessionID" mode="read" tag="session"/><rde-dm:attribute attribute="user:authenticationStatus" mode="read" tag="status"/></user-login>

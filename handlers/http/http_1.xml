@@ -15,5 +15,5 @@
     </rde-dm:attribute>
 
 </rde-dm:http>
-
+	<rde-dm:include content="handler-catch.xml" />
 </http>

@@ -26,4 +26,5 @@
 
 </rde-rd:email>
 </rde-dm:message> 
+	<rde-dm:include content="handler-catch.xml" />
 </message>

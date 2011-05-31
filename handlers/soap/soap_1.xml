@@ -17,4 +17,5 @@
 		</rde-dm:attribute>
   </rde-rd:soap-message> 
   </rde-dm:webservice>
+	<rde-dm:include content="handler-catch.xml" />
 </soap>

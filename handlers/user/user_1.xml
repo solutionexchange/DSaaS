@@ -1,4 +1,11 @@
 <user rest-root="true">
+<rde-dm:attribute mode="condition" tag="notag">
+   <rde-dm:constraint>(request:password ne "" and request:user ne "" and request:rde-rd:httpHeader-method eq "POST")</rde-dm:constraint>
+    <rde-dm:attribute attribute="request:noauthentication" mode="write" value="true"/>
+    <rde-dm:attribute attribute="session:safetycode" mode="write" value="EC81DC7D-106768CF"/>
+    <rde-dm:attribute attribute="request:safetycode" mode="write" value="EC81DC7D-106768CE"/>
+</rde-dm:attribute>
+
         <!-- add general handler support -->
         <rde-dm:include content="handler-support.xml" />
 	
@@ -39,5 +46,5 @@
 note _1 is version number increment with next release
 -->
 	<rde-dm:include content="users.[#request:rest.users.mode#]_1.xml" tag="notag" />
-	
+	<rde-dm:include content="handler-catch.xml" />
 </user>

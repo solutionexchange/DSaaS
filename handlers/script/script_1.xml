@@ -21,4 +21,5 @@
 			<rde-dm:attribute mode="read" attribute="context:param" inline-function="split('=',2)" tag="[#context:param#].split('=',1)" />
 		</rde-dm:attribute>
 	</rde-dm:script>
+	<rde-dm:include content="handler-catch.xml" />
 </script>
